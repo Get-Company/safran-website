@@ -169,7 +169,8 @@
     transition:transform .18s ease,border-color .18s ease;
   }
   .dish:hover{transform:translateY(-5px);border-color:var(--saffron)}
-  .dish .pic{height:150px;display:grid;place-items:center;font-size:3.4rem;position:relative}
+  .dish .pic{height:190px;display:grid;place-items:center;font-size:3.4rem;position:relative;overflow:hidden}
+  .dish .pic img{width:100%;height:100%;object-fit:cover;display:block}
   .dish .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.28))}
   .dish .body{padding:18px 20px 22px}
   .dish h4{font-family:var(--display);font-size:1.3rem;color:#fff;margin-bottom:6px}
@@ -236,6 +237,7 @@
       <a href="#liefern">Liefern lassen</a>
       <a href="#ayurveda">Ayurveda</a>
       <a href="#gerichte">Gerichte</a>
+      <a href="speisekarte.html">Speisekarte</a>
       <a href="#ambiente">Ambiente</a>
       <a href="#kontakt">Kontakt</a>
       <a class="btn deliver" href="tel:+4986634188934">Liefern lassen</a>
@@ -311,7 +313,7 @@
         </div>
         <div class="ayur-art">
           <div class="ring"></div>
-          <img src="assets/gallery-9.jpg" alt="Kunstvolle Dekoration im Restaurant Safran">
+          <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=75" alt="Bunte indische Gewürze – die Basis der ayurvedischen Küche" loading="lazy">
         </div>
       </div>
     </div>
@@ -360,29 +362,32 @@
       </div>
       <div class="dish-grid">
         <article class="dish">
-          <div class="pic" style="background:linear-gradient(140deg,#E8A33D,#C8341E)">🍗</div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=70" alt="Chicken Tandoori"></div>
           <div class="body"><h4>Chicken Tandoori</h4><p>Im Lehmofen mariniertes Hähnchen mit Joghurt, Ingwer und einer Note Safran.</p><span class="tag">Tandoor</span></div>
         </article>
         <article class="dish">
-          <div class="pic" style="background:linear-gradient(140deg,#D98324,#7A1E12)">🍛</div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=70" alt="Butter Chicken"></div>
           <div class="body"><h4>Butter Chicken</h4><p>Zartes Hähnchen in samtiger Tomaten-Sahne-Sauce mit Cashew und Gewürzen.</p><span class="tag">Klassiker</span></div>
         </article>
         <article class="dish">
-          <div class="pic" style="background:linear-gradient(140deg,#0E7C6B,#3A6B2E)">🥬</div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1589647363585-f4a7d3877b10?auto=format&fit=crop&w=600&q=70" alt="Palak Paneer"></div>
           <div class="body"><h4>Palak Paneer</h4><p>Frischer Spinat mit hausgemachtem Käse – vegetarisch und ayurvedisch.</p><span class="tag">Vegetarisch</span></div>
         </article>
         <article class="dish">
-          <div class="pic" style="background:linear-gradient(140deg,#E8A33D,#D0431F)">🍚</div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=70" alt="Lamm Biryani"></div>
           <div class="body"><h4>Lamm Biryani</h4><p>Duftender Basmatireis, geschmort mit Lamm, Safran und Kardamom.</p><span class="tag">Reisgericht</span></div>
         </article>
         <article class="dish">
-          <div class="pic" style="background:linear-gradient(140deg,#C58F3B,#8E5A1E)">🫓</div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1697155406014-04dc649b0953?auto=format&fit=crop&w=600&q=70" alt="Naan und Roti"></div>
           <div class="body"><h4>Naan &amp; Roti</h4><p>Frisch aus dem Tandoor – natur, mit Knoblauch oder gefüllt mit Käse.</p><span class="tag">Brot</span></div>
         </article>
         <article class="dish">
-          <div class="pic" style="background:linear-gradient(140deg,#F0C05A,#E07B24)">🥭</div>
+          <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1582801205465-c0d029e85a1c?auto=format&fit=crop&w=600&q=70" alt="Mango Lassi"></div>
           <div class="body"><h4>Mango Lassi</h4><p>Kühles Joghurtgetränk mit sonnengereifter Mango – erfrischend süß.</p><span class="tag">Getränk</span></div>
         </article>
+      </div>
+      <div style="text-align:center;margin-top:38px">
+        <a class="btn" style="background:var(--saffron);color:var(--maroon);box-shadow:0 10px 22px -10px var(--saffron)" href="speisekarte.html">📖 Ganze Speisekarte ansehen – über 130 Gerichte</a>
       </div>
     </div>
   </section>
@@ -455,13 +460,14 @@
       <nav class="foot-links">
         <a href="#liefern">Liefern lassen</a>
         <a href="#gerichte">Gerichte</a>
+        <a href="speisekarte.html">Speisekarte</a>
         <a href="#ambiente">Ambiente</a>
         <a href="#kontakt">Kontakt</a>
         <a href="mailto:safran0042@gmail.com">Datenschutz</a>
         <a href="mailto:safran0042@gmail.com">Impressum</a>
       </nav>
     </div>
-    <p class="foot-note">© 2026 Safran Ruhpolding · Hauptstraße 25a, 83324 Ruhpolding · Moderner Website-Entwurf – Fotos aus der Original-Galerie.</p>
+    <p class="foot-note">© 2026 Safran Ruhpolding · Hauptstraße 25a, 83324 Ruhpolding · Moderner Website-Entwurf – Ambiente-Fotos aus der Original-Galerie, Speise- &amp; Gewürzfotos: Unsplash (kostenlose Lizenz).</p>
   </div>
 </footer>
 
