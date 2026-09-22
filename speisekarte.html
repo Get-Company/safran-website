@@ -83,6 +83,31 @@
   .foot-links{display:flex;gap:20px;flex-wrap:wrap}
   .foot-links a{text-decoration:none;color:#C9A88F}.foot-links a:hover{color:var(--saffron)}
   .foot-note{margin-top:22px;padding-top:18px;border-top:1px solid rgba(232,163,61,.18);font-size:.8rem;color:#8f6f5c}
+
+  /* baukasten filter */
+  .baukasten{background:linear-gradient(180deg,#fff 0%,var(--cream-2) 100%);border-bottom:1px solid var(--line)}
+  .baukasten .wrap{padding-block:clamp(26px,4vw,42px)}
+  .bk-head h2{color:var(--maroon);font-size:clamp(1.5rem,4vw,2.2rem)}
+  .bk-head p{color:var(--muted);margin-top:6px;font-size:.98rem}
+  .bk-hint{display:inline-block;margin-left:6px;color:var(--maroon);font-weight:600;font-size:.85rem;white-space:nowrap}
+  .bgroup{margin-top:16px}
+  .bglabel{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--chili);font-weight:600;margin-bottom:8px}
+  .bchips{display:flex;flex-wrap:wrap;gap:8px}
+  .bchip{cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:500;color:var(--maroon);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;display:inline-flex;align-items:center;gap:7px;transition:background .14s,border-color .14s,color .14s}
+  .bchip>span{font-size:1rem;line-height:1}
+  .bchip:hover{border-color:var(--saffron)}
+  .bchip[data-state="1"]{background:var(--teal);border-color:var(--teal);color:#fff}
+  .bchip[data-state="1"]::after{content:"✓";margin-left:1px;font-weight:700}
+  .bchip[data-state="2"]{border-color:var(--chili);color:var(--chili);text-decoration:line-through;opacity:.9}
+  .bchip[data-state="2"]::after{content:"⛔";margin-left:1px;text-decoration:none;font-size:.85rem}
+  .bk-bar{display:flex;align-items:center;gap:16px;margin-top:22px;flex-wrap:wrap}
+  .bk-count{font-family:var(--display);color:var(--maroon);font-size:1.08rem}
+  .bk-reset{cursor:pointer;font-family:inherit;font-weight:600;color:#fff;background:var(--chili);border:none;border-radius:999px;padding:9px 18px}
+  .bk-reset:hover{background:#a72817}
+  .mcat.is-hidden,.mdish.is-hidden{display:none}
+  #bkEmpty{display:none;text-align:center;color:var(--muted);padding:40px 20px;font-size:1.05rem}
+  #bkEmpty.show{display:block}
+
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -111,6 +136,20 @@
   </div>
 </div></section>
 
+
+<section class="baukasten" id="baukasten"><div class="wrap">
+  <div class="bk-head">
+    <h2>🍽️ Stell dir dein Essen zusammen</h2>
+    <p>Klicke an, was du magst – ein weiterer Klick bedeutet „ohne“. Wir zeigen dir sofort die passenden Gerichte.
+       <span class="bk-hint">✓ mag ich · ⛔ ohne</span></p>
+  </div>
+  <div class="bgroup"><span class="bglabel">Proteine &amp; Basis</span><div class="bchips"><button type="button" class="bchip" data-tag="huhn" data-state="0"><span>🍗</span>Hähnchen</button><button type="button" class="bchip" data-tag="lamm" data-state="0"><span>🐑</span>Lamm</button><button type="button" class="bchip" data-tag="ente" data-state="0"><span>🦆</span>Ente</button><button type="button" class="bchip" data-tag="garnelen" data-state="0"><span>🦐</span>Garnelen</button><button type="button" class="bchip" data-tag="paneer" data-state="0"><span>🧀</span>Paneer / Käse</button><button type="button" class="bchip" data-tag="gemuese" data-state="0"><span>🥗</span>Gemüse</button><button type="button" class="bchip" data-tag="huelsen" data-state="0"><span>🫘</span>Linsen & Kichererbsen</button></div></div><div class="bgroup"><span class="bglabel">Zutaten</span><div class="bchips"><button type="button" class="bchip" data-tag="tomaten" data-state="0"><span>🍅</span>Tomaten</button><button type="button" class="bchip" data-tag="spinat" data-state="0"><span>🌿</span>Spinat</button><button type="button" class="bchip" data-tag="mango" data-state="0"><span>🥭</span>Mango</button><button type="button" class="bchip" data-tag="ananas" data-state="0"><span>🍍</span>Ananas</button><button type="button" class="bchip" data-tag="kokos" data-state="0"><span>🥥</span>Kokos</button><button type="button" class="bchip" data-tag="nuesse" data-state="0"><span>🥜</span>Nüsse & Cashew</button><button type="button" class="bchip" data-tag="champignon" data-state="0"><span>🍄</span>Champignons</button><button type="button" class="bchip" data-tag="kartoffel" data-state="0"><span>🥔</span>Kartoffeln</button><button type="button" class="bchip" data-tag="paprika" data-state="0"><span>🫑</span>Paprika</button><button type="button" class="bchip" data-tag="minze" data-state="0"><span>🍃</span>Minze</button><button type="button" class="bchip" data-tag="knoblauch" data-state="0"><span>🧄</span>Knoblauch</button><button type="button" class="bchip" data-tag="ingwer" data-state="0"><span>🫚</span>Ingwer</button></div></div><div class="bgroup"><span class="bglabel">Eigenschaften</span><div class="bchips"><button type="button" class="bchip" data-tag="scharf" data-state="0"><span>🌶️</span>Scharf</button><button type="button" class="bchip" data-tag="suesssauer" data-state="0"><span>🍯</span>Süß-sauer</button><button type="button" class="bchip" data-tag="vegetarisch" data-state="0"><span>🥦</span>Vegetarisch</button><button type="button" class="bchip" data-tag="vegan" data-state="0"><span>🌱</span>Vegan</button></div></div>
+  <div class="bk-bar">
+    <span class="bk-count" id="bkCount"></span>
+    <button type="button" class="bk-reset" id="bkReset">Zurücksetzen</button>
+  </div>
+</div></section>
+
 <nav class="catnav"><div class="catnav-inner"><a href="#cat-suppen">🍲 Suppen</a><a href="#cat-warmesvorspeisen">🧆 Warme Vorspeisen</a><a href="#cat-kaltesvorspeisen">🥗 Kalte Vorspeisen</a><a href="#cat-frischesknackigessalate">🥬 Frische knackige Salate</a><a href="#cat-tandoorisbrot">🫓 Tandoori Brot</a><a href="#cat-raita">🥛 Raita</a><a href="#cat-thalissnachsartsdesshauses">🍽️ Thalis nach Art des Hauses</a><a href="#cat-ente">🦆 Ente</a><a href="#cat-chicken">🍗 Chicken</a><a href="#cat-paneer">🧀 Paneer</a><a href="#cat-vegetarischesgerichte">🌿 Vegetarische Gerichte</a><a href="#cat-lamm">🐑 Lamm</a><a href="#cat-garnelen">🦐 Garnelen</a><a href="#cat-tandoorisnon-veg">🔥 Tandoori Non-Veg</a><a href="#cat-tandoorispaneersveg">🧀 Tandoori Paneer Veg</a><a href="#cat-reissundsbiryani">🍚 Reis &amp; Biryani</a><a href="#cat-dessert">🍨 Dessert</a><a href="#cat-furskinder">🧒 Für Kinder</a></div></nav>
 
 
@@ -118,28 +157,28 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🍲</span><h2>Suppen</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="huelsen huhn scharf tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1642497394078-4794e837019c?auto=format&fit=crop&w=600&q=70" alt="Sp. Suppe – scharf"><span class="mdish-nr">20</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Sp. Suppe – scharf</h3><span class="mdish-price">6,90&nbsp;€</span></div>
             <p>Scharfe exotische Suppe mit Linsen, Hühnerfleisch, Tomaten und Reis</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kokos tomaten vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1602704436046-51278415e8eb?auto=format&fit=crop&w=600&q=70" alt="Nariyal Tomaten-Shorba"><span class="mdish-nr">21</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Nariyal Tomaten-Shorba</h3><span class="mdish-price">6,50&nbsp;€</span></div>
             <p>Indische Tomatensuppe mit Kokosmilch</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="minze spinat vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1703335124227-e96a978c5b20?auto=format&fit=crop&w=600&q=70" alt="Haryali-Shorba"><span class="mdish-nr">22</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Haryali-Shorba</h3><span class="mdish-price">6,50&nbsp;€</span></div>
             <p>Indische Spinatsuppe mit Minze und Lemon</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="knoblauch vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1609171590547-6efb2a61b1ab?auto=format&fit=crop&w=600&q=70" alt="Lachsan-Shorba"><span class="mdish-nr">23</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Lachsan-Shorba</h3><span class="mdish-price">6,50&nbsp;€</span></div>
@@ -153,70 +192,70 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🧆</span><h2>Warme Vorspeisen</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese huelsen vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1765360024331-25b63e85272e?auto=format&fit=crop&w=600&q=70" alt="Mix Veg Pakoda"><span class="mdish-nr">30</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Mix Veg Pakoda</h3><span class="mdish-price">6,90&nbsp;€</span></div>
             <p>Frisches gemischtes Gemüse in Kichererbsenmehl gewendet und frittiert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=70" alt="Masala Samosa"><span class="mdish-nr">31</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Masala Samosa</h3><span class="mdish-price">7,90&nbsp;€</span></div>
             <p>Veg. Samosa in Sp. Masala-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1666190091191-0cd0c5c8c5b5?auto=format&fit=crop&w=600&q=70" alt="Phajj Bhaji"><span class="mdish-nr">32</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Phajj Bhaji</h3><span class="mdish-price">6,90&nbsp;€</span></div>
             <p>Zwiebeln geschnitten, kräftig gewürzt und frittiert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huelsen paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1601126217456-1744cdad7211?auto=format&fit=crop&w=600&q=70" alt="Paneer Pakora"><span class="mdish-nr">33</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Pakora</h3><span class="mdish-price">7,90&nbsp;€</span></div>
             <p>Frischer hausgemachter Käse in Kichererbsenmehl gewendet und frittiert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huelsen huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1627670381055-487000952cb0?auto=format&fit=crop&w=600&q=70" alt="Chicken Pakora"><span class="mdish-nr">34</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Chicken Pakora</h3><span class="mdish-price">7,90&nbsp;€</span></div>
             <p>Zartes mariniertes Hühnerfleisch in Kichererbsenmehl gewendet und frittiert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1767114915965-7abe87d7c7d8?auto=format&fit=crop&w=600&q=70" alt="Bread Pakoda"><span class="mdish-nr">35</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bread Pakoda</h3><span class="mdish-price">7,90&nbsp;€</span></div>
             <p>Sp. Pakora nach indischer Art</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen huelsen">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1620894580123-466ad3a0ca06?auto=format&fit=crop&w=600&q=70" alt="Jheenga Pakora"><span class="mdish-nr">36</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga Pakora</h3><span class="mdish-price">11,90&nbsp;€</span></div>
             <p>Garnelen gewendet in Kichererbsenmehl mit Gewürzmischung, frittiert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente gemuese huelsen">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1765360024331-25b63e85272e?auto=format&fit=crop&w=600&q=70" alt="Gemischter Vegetarischer Vorspeisenteller"><span class="mdish-nr">37</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Gemischter Vegetarischer Vorspeisenteller</h3><span class="mdish-price">12,90&nbsp;€</span></div>
             <p>Für 2 Personen – frisches Gemüse in Kichererbsenmehl gewendet und frittiert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=70" alt="Tandoori Vorspeisenteller (2 P.)"><span class="mdish-nr">38</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Tandoori Vorspeisenteller (2 P.)</h3><span class="mdish-price">14,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch in verschiedenen köstlichen Soßen mariniert, gegrillt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente paneer">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1589647363585-f4a7d3877b10?auto=format&fit=crop&w=600&q=70" alt="Paneer Tandoori Vorspeisenteller"><span class="mdish-nr">39</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Tandoori Vorspeisenteller</h3><span class="mdish-price">14,90&nbsp;€</span></div>
@@ -230,28 +269,28 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🥗</span><h2>Kalte Vorspeisen</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="huelsen vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1680764955303-81618ecb67b5?auto=format&fit=crop&w=600&q=70" alt="Pappad"><span class="mdish-nr">40</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Pappad</h3><span class="mdish-price">4,50&nbsp;€</span></div>
             <p>Zwei hauchdünne Linsenwaffeln mit 3 verschiedenen Soßen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huelsen tomaten vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1591031107640-45556bbac5f1?auto=format&fit=crop&w=600&q=70" alt="Chana-Chat"><span class="mdish-nr">41</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Chana-Chat</h3><span class="mdish-price">5,50&nbsp;€</span></div>
             <p>Kichererbsen mit Zwiebeln, frischen Tomaten, hausgem. Soßen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="tomaten vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=600&q=70" alt="Masala Pappad"><span class="mdish-nr">43</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Masala Pappad</h3><span class="mdish-price">5,50&nbsp;€</span></div>
             <p>Belegtes Pappad mit frischen Zwiebeln und Tomaten, Koriander, hausgem. Soßen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1626242106661-fccdd6e56fc8?auto=format&fit=crop&w=600&q=70" alt="Chic-Chat"><span class="mdish-nr">42</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Chic-Chat</h3><span class="mdish-price">5,90&nbsp;€</span></div>
@@ -265,35 +304,35 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🥬</span><h2>Frische knackige Salate</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1708184528305-33ce7daced65?auto=format&fit=crop&w=600&q=70" alt="Gemischter Salat"><span class="mdish-nr">50</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Gemischter Salat</h3><span class="mdish-price">8,90&nbsp;€</span></div>
             <p>Verschiedene grüne Salate</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="tomaten vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1559317996-d154e05c76fb?auto=format&fit=crop&w=600&q=70" alt="Tomatensalat"><span class="mdish-nr">51</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Tomatensalat</h3><span class="mdish-price">8,90&nbsp;€</span></div>
             <p>Mit Zwiebeln, Essig und Öl</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1646487793655-bbf280273d2f?auto=format&fit=crop&w=600&q=70" alt="Paneer Salat"><span class="mdish-nr">52</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Salat</h3><span class="mdish-price">15,90&nbsp;€</span></div>
             <p>Gemischter Salat mit hausgemachtem Käse und hausgemachtem Dressing</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1651217611748-7e0d467eec9b?auto=format&fit=crop&w=600&q=70" alt="Salat mit Ente"><span class="mdish-nr">54</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Salat mit Ente</h3><span class="mdish-price">17,90&nbsp;€</span></div>
             <p>Gem. Salat mit gegrillten Entenbrustfiletstreifen nach indischer Art, hausgem. Dressing</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1723476684266-012f2c163667?auto=format&fit=crop&w=600&q=70" alt="Salat Kukad"><span class="mdish-nr">53</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Salat Kukad</h3><span class="mdish-price">15,90&nbsp;€</span></div>
@@ -307,70 +346,70 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🫓</span><h2>Tandoori Brot</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1697155406014-04dc649b0953?auto=format&fit=crop&w=600&q=70" alt="Naan"><span class="mdish-nr">60</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Naan</h3><span class="mdish-price">4,50&nbsp;€</span></div>
             <p>Ovales Brot aus Hefeteig</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1655979284091-eea0e93405ee?auto=format&fit=crop&w=600&q=70" alt="Roti"><span class="mdish-nr">61</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Roti</h3><span class="mdish-price">4,50&nbsp;€</span></div>
             <p>Flaches Vollkornfladenbrot</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690915475862-336b65f571a3?auto=format&fit=crop&w=600&q=70" alt="Butter Naan"><span class="mdish-nr">62</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Butter Naan</h3><span class="mdish-price">4,90&nbsp;€</span></div>
             <p>Ovales Brot aus Hefeteig mit Butter</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="minze vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1640625314547-aee9a7696589?auto=format&fit=crop&w=600&q=70" alt="Pudina Naan"><span class="mdish-nr">63</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Pudina Naan</h3><span class="mdish-price">5,50&nbsp;€</span></div>
             <p>Gefüllt mit frischer Minze</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ingwer vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1683533761804-5fc12be0f684?auto=format&fit=crop&w=600&q=70" alt="Adrak Naan"><span class="mdish-nr">64</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Adrak Naan</h3><span class="mdish-price">5,50&nbsp;€</span></div>
             <p>Gefüllt mit frischem Ingwer</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kokos paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1574448857443-dc1d7e9c4dad?auto=format&fit=crop&w=600&q=70" alt="Muglai Kulcha"><span class="mdish-nr">65</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Muglai Kulcha</h3><span class="mdish-price">5,90&nbsp;€</span></div>
             <p>Hefeteigbrot gefüllt mit hausgemachtem Käse, Kokos, Rosinen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="knoblauch paneer vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1553683374-242e9f9567f1?auto=format&fit=crop&w=600&q=70" alt="Garlic Kulcha"><span class="mdish-nr">66</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Garlic Kulcha</h3><span class="mdish-price">5,50&nbsp;€</span></div>
             <p>Hefeteigbrot gefüllt mit fr. Knoblauch</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690915475901-6c08af925906?auto=format&fit=crop&w=600&q=70" alt="Masala Naan"><span class="mdish-nr">68</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Masala Naan</h3><span class="mdish-price">5,90&nbsp;€</span></div>
             <p>Hefeteigbrot mit Hühnerfleisch und Masala-Gewürz</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="minze scharf vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1697155406014-04dc649b0953?auto=format&fit=crop&w=600&q=70" alt="Spezial Bauer Naan – scharf"><span class="mdish-nr">67</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Spezial Bauer Naan – scharf</h3><span class="mdish-price">5,50&nbsp;€</span></div>
             <p>Gefüllt mit frischer Minze, Zwiebeln und grüner Chili</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ingwer knoblauch scharf vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1655979284091-eea0e93405ee?auto=format&fit=crop&w=600&q=70" alt="Desi Spezial Naan – scharf"><span class="mdish-nr">69</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Desi Spezial Naan – scharf</h3><span class="mdish-price">5,50&nbsp;€</span></div>
@@ -384,21 +423,21 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🥛</span><h2>Raita</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1679735107918-15112296e28d?auto=format&fit=crop&w=600&q=70" alt="Plain Dahi"><span class="mdish-nr">70</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Plain Dahi</h3><span class="mdish-price">3,50&nbsp;€</span></div>
             <p>Einfacher Joghurt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="minze scharf tomaten vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1657183486117-1f4fece6c69b?auto=format&fit=crop&w=600&q=70" alt="Sp.-Raita – scharf"><span class="mdish-nr">71</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Sp.-Raita – scharf</h3><span class="mdish-price">5,90&nbsp;€</span></div>
             <p>Joghurt mit Gurken, Zwiebel, Tomaten, Minze, grünen Chili, Spezialgewürzen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1543363136-3fdb62e11be5?auto=format&fit=crop&w=600&q=70" alt="Kheere Ka Raita"><span class="mdish-nr">72</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kheere Ka Raita</h3><span class="mdish-price">4,90&nbsp;€</span></div>
@@ -412,56 +451,56 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🍽️</span><h2>Thalis nach Art des Hauses</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="ente">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1680993032090-1ef7ea9b51e5?auto=format&fit=crop&w=600&q=70" alt="Spezial-Menü für 2 Personen"><span class="mdish-nr">80</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Spezial-Menü für 2 Personen</h3><span class="mdish-price">68,00&nbsp;€</span></div>
             <p>Lassen Sie sich überraschen (Suppe, warmer Vorspeisenteller, Hauptgericht, Nachspeise)</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1742281257687-092746ad6021?auto=format&fit=crop&w=600&q=70" alt="Yogi oder Vegan Thali"><span class="mdish-nr">81</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Yogi oder Vegan Thali</h3><span class="mdish-price">20,90&nbsp;€</span></div>
             <p>3 verschiedene Gemüsegerichte, Raita, Salat, Naan und Basmati-Reis</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1742281258189-3b933879867a?auto=format&fit=crop&w=600&q=70" alt="Jinga Thali"><span class="mdish-nr">83</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jinga Thali</h3><span class="mdish-price">25,50&nbsp;€</span></div>
             <p>3 verschiedene Garnelengerichte, Raita, Salat, Naan und Basmati-Reis</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1711153419402-336ee48f2138?auto=format&fit=crop&w=600&q=70" alt="Ente Thali"><span class="mdish-nr">86</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Thali</h3><span class="mdish-price">25,50&nbsp;€</span></div>
             <p>3 verschiedene Entegerichte, Raita, Salat, Naan und Basmati-Reis</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1559561724-732dbca7be1e?auto=format&fit=crop&w=600&q=70" alt="Yogi Thali für 2 Personen"><span class="mdish-nr">84</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Yogi Thali für 2 Personen</h3><span class="mdish-price">39,90&nbsp;€</span></div>
             <p>(3×2) verschiedene Gemüsegerichte, Raita, Salat, Naan und Basmati-Reis</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=70" alt="OM Thali für 2 Personen"><span class="mdish-nr">85</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>OM Thali für 2 Personen</h3><span class="mdish-price">43,90&nbsp;€</span></div>
             <p>(2×2) verschiedene Chicken-Fleischgerichte, 2 Gemüsegerichte, Raita, Salat, Naan und Basmati-Reis</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1589778655375-3e622a9fc91c?auto=format&fit=crop&w=600&q=70" alt="Ente Thali für 2 Personen"><span class="mdish-nr">87</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Thali für 2 Personen</h3><span class="mdish-price">49,50&nbsp;€</span></div>
             <p>(3×2) verschiedene Entegerichte, Raita, Salat, Naan und Basmati-Reis</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1588644525273-f37b60d78512?auto=format&fit=crop&w=600&q=70" alt="OM Thali"><span class="mdish-nr">82</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>OM Thali</h3><span class="mdish-price">22,90&nbsp;€</span></div>
@@ -475,77 +514,77 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🦆</span><h2>Ente</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="ente kokos minze scharf spinat">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1611489142329-5f62cfa43e6e?auto=format&fit=crop&w=600&q=70" alt="Ente Haryali – mittelscharf"><span class="mdish-nr">148</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Haryali – mittelscharf</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch, Rahmspinat, Koriander, grüner Chili, Minze, orientalische Kräuter-Kokossoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente ingwer kokos scharf tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1603865162280-252f7cd77492?auto=format&fit=crop&w=600&q=70" alt="Ente Madrasi – sehr scharf"><span class="mdish-nr">149</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Madrasi – sehr scharf</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch, Kokossoße, Ingwer, Tomaten, rote Chili, sehr scharf</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente suesssauer">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1594798609310-6bfec6d467ac?auto=format&fit=crop&w=600&q=70" alt="Ente Khata Mitha"><span class="mdish-nr">150</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Khata Mitha</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch süß-sauer, Safran, Tamarindensoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente paprika tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1707448829764-9474458021ed?auto=format&fit=crop&w=600&q=70" alt="Ente Karahi Wala"><span class="mdish-nr">151</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Karahi Wala</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch in Sp.-Currysoße, Paprika, Zwiebelstücke, Tomaten – in der Pfanne serviert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente kartoffel scharf">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1728910107534-e04e261768ae?auto=format&fit=crop&w=600&q=70" alt="Ente Goawalu – sehr scharf"><span class="mdish-nr">152</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Goawalu – sehr scharf</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch mit Kartoffeln in sehr kräftiger Soße mit Spezialgewürzen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente mango nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1631292784640-2b24be784d5d?auto=format&fit=crop&w=600&q=70" alt="Aambi Ente"><span class="mdish-nr">153</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Aambi Ente</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch in frischer Mango-Safran-Cashewnuss-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente paprika scharf tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1710091691780-c7eb0dc50cf8?auto=format&fit=crop&w=600&q=70" alt="Ente Jalfrezi – mittelscharf"><span class="mdish-nr">154</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Jalfrezi – mittelscharf</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch, Paprika, Zwiebel, Tomaten, grüner Chili – scharf</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente kokos nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1603496987351-f84a3ba5ec85?auto=format&fit=crop&w=600&q=70" alt="Ente Mughlai"><span class="mdish-nr">155</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Mughlai</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch in Safran-Cashew-Kokosflocken-Mandeln-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1705174427925-744646e72117?auto=format&fit=crop&w=600&q=70" alt="Ente Masaledar"><span class="mdish-nr">156</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Masaledar</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch in Sp.-Masala-Safran-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1764304733301-3a9f335f0c67?auto=format&fit=crop&w=600&q=70" alt="Ente Currydar"><span class="mdish-nr">157</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente Currydar</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Knuspriges Entenfleisch, verschiedene Gewürze in Currysoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ente gemuese">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1694579740719-0e601c5d2437?auto=format&fit=crop&w=600&q=70" alt="Ente „Safran-Spezial“"><span class="mdish-nr">158</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Ente „Safran-Spezial“</h3><span class="mdish-price">24,90&nbsp;€</span></div>
@@ -559,105 +598,105 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🍗</span><h2>Chicken</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=70" alt="Kukad Haryanvi Curry"><span class="mdish-nr">110</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Haryanvi Curry</h3><span class="mdish-price">17,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch nach nordindischem Rezept, verschiedene Gewürze, Currysoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=70" alt="Chicken Badami"><span class="mdish-nr">111</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Chicken Badami</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch in Cashew-Safran-Soße, gem. Mandeln, nach königl. Art</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese huhn ingwer">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1728910107534-e04e261768ae?auto=format&fit=crop&w=600&q=70" alt="Kadahi Kukad"><span class="mdish-nr">112</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kadahi Kukad</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Gegrilltes Hühnerfleisch in Sp.-Currysoße, frischer Ingwer, verschiedenes Gemüse – in der Pfanne serviert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="champignon huhn ingwer knoblauch nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1705174427925-744646e72117?auto=format&fit=crop&w=600&q=70" alt="Kukad Khumwala"><span class="mdish-nr">116</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Khumwala</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch, frische Champignons, Knoblauch, Ingwer in Mandel-Safran-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn nuesse tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1707448829764-9474458021ed?auto=format&fit=crop&w=600&q=70" alt="Kukad Butterwala"><span class="mdish-nr">114</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Butterwala</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch in Butter-Tomaten-Safran-Cashew-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn kokos minze nuesse scharf spinat">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1742599361539-f096753d1100?auto=format&fit=crop&w=600&q=70" alt="Kukad Haryali – mittelscharf"><span class="mdish-nr">115</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Haryali – mittelscharf</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Hühnerfleisch mit Korianderblättern, orientalische Kräutersoße, Kokosnussmilch, grüner Chili, Minze, Spinat</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn kartoffel scharf">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1708782344490-9026aaa5eec7?auto=format&fit=crop&w=600&q=70" alt="Chicken Goawaluo – sehr scharf"><span class="mdish-nr">113</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Chicken Goawaluo – sehr scharf</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Hühnerfleisch mit Kartoffeln in sehr kräftiger Soße mit Spezialgewürzen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1772730065344-4cf131b39951?auto=format&fit=crop&w=600&q=70" alt="Rasila Kukad"><span class="mdish-nr">117</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Rasila Kukad</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Gegrilltes Hühnerfleisch, ausgewählte Gewürze nach Geheimrezept unseres Chefs</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn mango nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1742599361574-6fb156181466?auto=format&fit=crop&w=600&q=70" alt="Aambi Wala Kukad"><span class="mdish-nr">118</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Aambi Wala Kukad</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch in frischer Mango-Safran-Cashewnuss-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ananas huhn kokos nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1710091691780-c7eb0dc50cf8?auto=format&fit=crop&w=600&q=70" alt="Kukad Ananasi"><span class="mdish-nr">119</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Ananasi</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch in fr. Ananas-Kokos-Safran-Cashewnuss-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn ingwer kokos scharf tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1631292784640-2b24be784d5d?auto=format&fit=crop&w=600&q=70" alt="Kukad Madrasi – sehr scharf"><span class="mdish-nr">120</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Madrasi – sehr scharf</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch, Kokossoße, Ingwer, Tomaten, rote Chili, sehr scharf</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn suesssauer">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1764304733301-3a9f335f0c67?auto=format&fit=crop&w=600&q=70" alt="Kukad Khata Mitha"><span class="mdish-nr">121</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Khata Mitha</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Hühnerbrustfilet in süß-sauer-Safran-Tamarindensoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=70" alt="Kukad Masaledar"><span class="mdish-nr">122</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Masaledar</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Gegrilltes Hühnerfleisch in Sp.-Safran-Masala-Soße, traditionelle nordindische Art</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn paprika scharf tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=70" alt="Kukad Jalfreezi – mittelscharf"><span class="mdish-nr">123</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukad Jalfreezi – mittelscharf</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Gegrilltes Hühnerfleisch mit Zwiebeln, Tomaten, Paprika, grünem Chili – in der Pfanne serviert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese huhn lamm">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1631452180539-96aca7d48617?auto=format&fit=crop&w=600&q=70" alt="Safran-Spezial Teller"><span class="mdish-nr">141</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Safran-Spezial Teller</h3><span class="mdish-price">22,90&nbsp;€</span></div>
@@ -671,63 +710,63 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🧀</span><h2>Paneer</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="paneer tomaten vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1767114915936-745dd372f1d8?auto=format&fit=crop&w=600&q=70" alt="Paneer Butter Wala"><span class="mdish-nr">177</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Butter Wala</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Hausgemachter Käse mit Butter, Tomaten, Masala-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ingwer knoblauch paneer spinat vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1666001120694-3ebe8fd207be?auto=format&fit=crop&w=600&q=70" alt="Palak Paneer"><span class="mdish-nr">178</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Palak Paneer</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Rahmspinat mit hausgemachtem Käse, Ingwer, Knoblauch, fein gewürzt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ingwer paneer paprika tomaten vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=70" alt="Paneer Wali Kadahi"><span class="mdish-nr">179</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Wali Kadahi</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Frischer hausgemachter Käse, Zwiebel, Paprika, frische Tomaten, Ingwer, Koriander</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kokos nuesse paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690401767645-595de0e0e5f8?auto=format&fit=crop&w=600&q=70" alt="Muglai Matter Paneer"><span class="mdish-nr">180</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Muglai Matter Paneer</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Grüne Erbsen mit hausgemachtem Käse in Mandel-Safran-Kokos-Soße, fein gewürzt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="paneer paprika scharf tomaten vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690403160225-3db8cc8babd5?auto=format&fit=crop&w=600&q=70" alt="Paneer Chilifreji – mittelscharf"><span class="mdish-nr">188</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Chilifreji – mittelscharf</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Hausgemachter Käse mit Paprika, Zwiebeln, Tomaten, grünem Chili in Sp.-Chilisoße, scharf</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kartoffel nuesse paneer suesssauer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690369642866-3f9143af0a89?auto=format&fit=crop&w=600&q=70" alt="Khata Mitha Kofta"><span class="mdish-nr">184</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Khata Mitha Kofta</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Bällchen aus Kartoffel, Hauskäse, Mandeln, Rosinen &amp; Cashewnüssen, frittiert, in Tamarinde-Safran-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kartoffel nuesse paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690369642707-3d30e6f7fdcb?auto=format&fit=crop&w=600&q=70" alt="Muglai Kofta"><span class="mdish-nr">182</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Muglai Kofta</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Bällchen aus Kartoffel, Hauskäse, Mandeln, Rosinen &amp; Cashewnüssen, frittiert, würzig mild</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kartoffel mango nuesse paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1788843304145-bec146aa83c5?auto=format&fit=crop&w=600&q=70" alt="Aambiwala Kofta"><span class="mdish-nr">183</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Aambiwala Kofta</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Bällchen aus Kartoffel, Hauskäse, Mandeln, Rosinen &amp; Cashewnüssen, frittiert, in Mango-Safran-Cashewnuss-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kartoffel paneer spinat vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690401769082-5f475f87fb22?auto=format&fit=crop&w=600&q=70" alt="Palak Wala Kofta"><span class="mdish-nr">186</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Palak Wala Kofta</h3><span class="mdish-price">18,90&nbsp;€</span></div>
@@ -741,63 +780,63 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🌿</span><h2>Vegetarische Gerichte</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="huelsen ingwer knoblauch vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=600&q=70" alt="Delhi Dal Tarka"><span class="mdish-nr">170</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Delhi Dal Tarka</h3><span class="mdish-price">17,90&nbsp;€</span></div>
             <p>Indisches Nationalgericht: gelbe Linsen, frischer Knoblauch, Ingwer, Koriander mit pflanzlichem Fett zubereitet</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese kokos minze scharf spinat vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1619161208416-b7d5f04c5b99?auto=format&fit=crop&w=600&q=70" alt="Pudine Wali Sabzi – mittelscharf"><span class="mdish-nr">171</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Pudine Wali Sabzi – mittelscharf</h3><span class="mdish-price">18,50&nbsp;€</span></div>
             <p>Fr. Gemüse in Rahmspinat, Koriander, grüner Chili, Minze, orientalische Kräuter-Kokossoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese suesssauer vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1587040690786-b091531837a2?auto=format&fit=crop&w=600&q=70" alt="Sabzi Khati Mithi"><span class="mdish-nr">172</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Sabzi Khati Mithi</h3><span class="mdish-price">17,90&nbsp;€</span></div>
             <p>Verschiedenes gem. Gemüse in süß-sauer-Safran-Tamarindensoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese kokos nuesse vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1582576163090-09d3b6f8a969?auto=format&fit=crop&w=600&q=70" alt="Vegetable Badami"><span class="mdish-nr">173</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Vegetable Badami</h3><span class="mdish-price">17,90&nbsp;€</span></div>
             <p>Frisches Gemüse in Mandel-Kokos-Safran-Soße nach Art der königl. Mogul-Küche</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huelsen ingwer knoblauch tomaten vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1554054204-b2f70b09d031?auto=format&fit=crop&w=600&q=70" alt="Chana Karara Masala"><span class="mdish-nr">174</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Chana Karara Masala</h3><span class="mdish-price">17,90&nbsp;€</span></div>
             <p>Kichererbsen in kräftiger Masalasoße mit Tomaten, Knoblauch, Zwiebeln, Ingwer</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese scharf vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1777310823420-db2197ff9004?auto=format&fit=crop&w=600&q=70" alt="Veg Chilifrezi – mittelscharf"><span class="mdish-nr">175</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Veg Chilifrezi – mittelscharf</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Verschiedenes gem. Gemüse in Sp.-Chili-Soße – in der Pfanne serviert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese kokos mango nuesse vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1761315412830-2f59480377b0?auto=format&fit=crop&w=600&q=70" alt="Aambi Wali Sabzi"><span class="mdish-nr">176</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Aambi Wali Sabzi</h3><span class="mdish-price">17,90&nbsp;€</span></div>
             <p>Frisches gem. Gemüse mit frischer Mango-Safran-Cashewnuss-Kokos-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese scharf vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1720949579179-b4d04403f548?auto=format&fit=crop&w=600&q=70" alt="Sabzi Goawaluu – sehr scharf"><span class="mdish-nr">187</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Sabzi Goawaluu – sehr scharf</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Fr. Gemüse in sehr kräftiger Soße mit Spezialgewürzen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese ingwer tomaten vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=600&q=70" alt="Bhindi Masaledar"><span class="mdish-nr">181</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bhindi Masaledar</h3><span class="mdish-price">18,90&nbsp;€</span></div>
@@ -811,70 +850,70 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🐑</span><h2>Lamm</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="lamm">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=70" alt="Bakra Rangili Curry"><span class="mdish-nr">130</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakra Rangili Curry</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Zartes Lammfleisch in kräftiger Rogan-Curry-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="ingwer kokos lamm scharf tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1710091691802-7dedb8af9a77?auto=format&fit=crop&w=600&q=70" alt="Bakra Madrasi – sehr scharf"><span class="mdish-nr">131</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakra Madrasi – sehr scharf</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Zartes Lammfleisch, Kokossoße, Ingwer, Tomaten, rote Chili, sehr scharf</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="champignon ingwer knoblauch lamm nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1719132125606-b9a713fbb496?auto=format&fit=crop&w=600&q=70" alt="Bakra Kumbo Wala"><span class="mdish-nr">133</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakra Kumbo Wala</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Zartes Lammfleisch, frische Champignons, Knoblauch, Ingwer in Mandel-Safran-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kartoffel lamm scharf">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1559203244-78de52adba0e?auto=format&fit=crop&w=600&q=70" alt="Bakra Goaowalo – sehr scharf"><span class="mdish-nr">134</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakra Goaowalo – sehr scharf</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Lammfleisch mit Kartoffeln in sehr kräftiger Soße mit Spezialgewürzen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="lamm paprika tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1716535232842-d10da4eb33d5?auto=format&fit=crop&w=600&q=70" alt="Bakra Karahi"><span class="mdish-nr">135</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakra Karahi</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Lammfleisch in Sp.-Currysoße mit Paprika, Zwiebeln, Tomaten – in der Pfanne serviert</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="lamm">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1710091691771-96b2e6d17dac?auto=format&fit=crop&w=600&q=70" alt="Bakra Masaledar"><span class="mdish-nr">136</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakra Masaledar</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Zartes Lammfleisch in Sp.-Safran-Masala-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="lamm mango nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=70" alt="Mango Bakra"><span class="mdish-nr">137</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Mango Bakra</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Zartes Lammfleisch in frischer Mango-Safran-Cashewnuss-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kokos lamm minze scharf spinat">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1603496987351-f84a3ba5ec85?auto=format&fit=crop&w=600&q=70" alt="Bakra Haryali Curry – mittelscharf"><span class="mdish-nr">138</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakra Haryali Curry – mittelscharf</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Zartes Lammfleisch, Rahmspinat, Koriander, grüner Chili, Minze, orientalische Kräuter-Kokossoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kokos lamm nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=70" alt="Mughlai Meat"><span class="mdish-nr">139</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Mughlai Meat</h3><span class="mdish-price">22,90&nbsp;€</span></div>
             <p>Zartes Lammfleisch, Kokosflocken, gem. Mandeln, Safran-Sahnesoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="lamm paprika scharf tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1710091691802-7dedb8af9a77?auto=format&fit=crop&w=600&q=70" alt="Bakra Mirchiwala – mittelscharf"><span class="mdish-nr">140</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakra Mirchiwala – mittelscharf</h3><span class="mdish-price">22,90&nbsp;€</span></div>
@@ -888,49 +927,49 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🦐</span><h2>Garnelen</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen gemuese">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1720949579179-b4d04403f548?auto=format&fit=crop&w=600&q=70" alt="Jheenga-Spezial Teller"><span class="mdish-nr">163</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga-Spezial Teller</h3><span class="mdish-price">25,50&nbsp;€</span></div>
             <p>Riesengarnelen, frisches Gemüse, ausgewählte Gewürze nach Geheimrezept unseres Chefs</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1632660345494-9cc2607f89c2?auto=format&fit=crop&w=600&q=70" alt="Jheenga Currydar"><span class="mdish-nr">164</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga Currydar</h3><span class="mdish-price">24,90&nbsp;€</span></div>
             <p>Riesengarnelen in Currysoße mit feinen Gewürzen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1734313252461-7ed90c07befc?auto=format&fit=crop&w=600&q=70" alt="Jheenga Masaladar"><span class="mdish-nr">165</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga Masaladar</h3><span class="mdish-price">24,90&nbsp;€</span></div>
             <p>Riesengarnelen in kräftiger Masala-Safran-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="champignon garnelen ingwer knoblauch nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1761545832792-535fafbad368?auto=format&fit=crop&w=600&q=70" alt="Jheenga Khumb Wala"><span class="mdish-nr">166</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga Khumb Wala</h3><span class="mdish-price">24,90&nbsp;€</span></div>
             <p>Riesengarnelen mit frischen Champignons, Knoblauch, Ingwer in Mandel-Safran-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen paprika scharf tomaten">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1627703567676-baf986fc608a?auto=format&fit=crop&w=600&q=70" alt="Jheenga Jalfrezi – mittelscharf"><span class="mdish-nr">167</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga Jalfrezi – mittelscharf</h3><span class="mdish-price">24,90&nbsp;€</span></div>
             <p>Riesengarnelen mit Paprika, Zwiebeln, Tomaten und grünem Chili, scharf</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen mango nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1781684081404-5c090011b53e?auto=format&fit=crop&w=600&q=70" alt="Jheenga Mango"><span class="mdish-nr">168</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga Mango</h3><span class="mdish-price">24,90&nbsp;€</span></div>
             <p>Riesengarnelen mit Mango-Safran-Cashewnuss-Soße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen kartoffel scharf">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1620894580123-466ad3a0ca06?auto=format&fit=crop&w=600&q=70" alt="Jheenga Gawallu – sehr scharf"><span class="mdish-nr">169</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga Gawallu – sehr scharf</h3><span class="mdish-price">25,50&nbsp;€</span></div>
@@ -944,49 +983,49 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🔥</span><h2>Tandoori Non-Veg</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1652545296821-09a023a9fd08?auto=format&fit=crop&w=600&q=70" alt="Murgh Keshri Tikka"><span class="mdish-nr">92</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Murgh Keshri Tikka</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Zarte Hühnerfleischstücke mariniert in Safran, Sp.-Gewürzepaste, gegrillt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese huhn scharf">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1727280376746-b89107a5b0df?auto=format&fit=crop&w=600&q=70" alt="Murg Acharwala Tikka – mittelscharf"><span class="mdish-nr">93</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Murg Acharwala Tikka – mittelscharf</h3><span class="mdish-price">20,90&nbsp;€</span></div>
             <p>Zarte marinierte Hühnerfleischstücke gegrillt, Obst-/Gemüse-Marinade, traditionell nordindisch, pikant</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn minze scharf spinat">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1605908580297-f3e1c02e64ff?auto=format&fit=crop&w=600&q=70" alt="Pudina Kukad Tikka"><span class="mdish-nr">94</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Pudina Kukad Tikka</h3><span class="mdish-price">20,90&nbsp;€</span></div>
             <p>Zartes mariniertes Hühnerfleisch in Spinat, Minze, Chili und Koriandersoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1649295948526-fd64e7248754?auto=format&fit=crop&w=600&q=70" alt="Murgh Muglai Tikka"><span class="mdish-nr">95</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Murgh Muglai Tikka</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Hühnerbrustfilet in Joghurt, Sahne, Cashewpaste, schwarzer Pfeffer, indische Gewürze</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn scharf">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1652545296882-cf7f118c4df5?auto=format&fit=crop&w=600&q=70" alt="Murg Mirchi Tikka – sehr scharf"><span class="mdish-nr">96</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Murg Mirchi Tikka – sehr scharf</h3><span class="mdish-price">21,90&nbsp;€</span></div>
             <p>Zartes Hühnerfleisch mariniert in Sp.-rote-Chilipaste, schwarzer Pfeffer, indische Gewürze, am Spieß gegrillt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1720949579179-b4d04403f548?auto=format&fit=crop&w=600&q=70" alt="Jheenga Tandoori"><span class="mdish-nr">100</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheenga Tandoori</h3><span class="mdish-price">25,50&nbsp;€</span></div>
             <p>Riesengarnelen in Joghurt, Safran und Sp.-Gewürzen eingelegt, knusprig gegrillt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1617692855027-33b14f061079?auto=format&fit=crop&w=600&q=70" alt="Mixed-Grill-Platte"><span class="mdish-nr">101</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Mixed-Grill-Platte</h3><span class="mdish-price">25,50&nbsp;€</span></div>
@@ -1000,42 +1039,42 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🧀</span><h2>Tandoori Paneer Veg</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1589647363585-f4a7d3877b10?auto=format&fit=crop&w=600&q=70" alt="Vegetable Paneer Tikka"><span class="mdish-nr">90</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Vegetable Paneer Tikka</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Hausgemachter Käse, Gemüse mariniert in Sp.-Safran-Soße, am Spieß gegrillt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="minze paneer scharf spinat vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1767114915936-745dd372f1d8?auto=format&fit=crop&w=600&q=70" alt="Paneer Pudina Tikka"><span class="mdish-nr">901</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Pudina Tikka</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Hausgemachter Käse mariniert in Spinat, Minze, Chili und Koriandersoße</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="paneer scharf vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1666001120694-3ebe8fd207be?auto=format&fit=crop&w=600&q=70" alt="Paneer Achari Wala Tikka – mittelscharf"><span class="mdish-nr">902</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Achari Wala Tikka – mittelscharf</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Hausgemachter Käse mariniert in Sp.-pikanter Soße, am Spieß gegrillt nach berühmtem Rezept</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="nuesse paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=70" alt="Paneer Rajowala Tikka"><span class="mdish-nr">903</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Rajowala Tikka</h3><span class="mdish-price">19,90&nbsp;€</span></div>
             <p>Hausgemachter Käse mariniert in Cashewpaste, schwarzer Pfeffer, indische Gewürze</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="paneer scharf vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690401767645-595de0e0e5f8?auto=format&fit=crop&w=600&q=70" alt="Paneer Mirchi Tikka – sehr scharf"><span class="mdish-nr">904</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Mirchi Tikka – sehr scharf</h3><span class="mdish-price">20,90&nbsp;€</span></div>
             <p>Hausgemachter Käse mariniert in Sp.-rote-Chilipaste, schwarzer Pfeffer, am Spieß gegrillt</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1690403160225-3db8cc8babd5?auto=format&fit=crop&w=600&q=70" alt="Paneer Mix Tikka"><span class="mdish-nr">905</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Mix Tikka</h3><span class="mdish-price">22,90&nbsp;€</span></div>
@@ -1049,42 +1088,42 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🍚</span><h2>Reis &amp; Biryani</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="gemuese kokos nuesse vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=70" alt="Sabzi Biryani"><span class="mdish-nr">190</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Sabzi Biryani</h3><span class="mdish-price">17,90&nbsp;€</span></div>
             <p>Gebratener Safran-Reis mit frischem gemischtem Gemüse, Mandeln, Rosinen, Kokos</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn kokos nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&w=600&q=70" alt="Kukadi Biryani"><span class="mdish-nr">191</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Kukadi Biryani</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Gebratener Safran-Reis mit Hühnerfleisch, Mandeln, Rosinen, Kokos</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen kokos nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1697155406055-2db32d47ca07?auto=format&fit=crop&w=600&q=70" alt="Jheengi Biryani"><span class="mdish-nr">193</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Jheengi Biryani</h3><span class="mdish-price">25,50&nbsp;€</span></div>
             <p>Gebratener Safran-Reis mit Riesengarnelen, Mandeln, Rosinen, Kokos</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kokos lamm nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1705174299330-939dd03cc864?auto=format&fit=crop&w=600&q=70" alt="Bakri Kashmiri Biryani"><span class="mdish-nr">192</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Bakri Kashmiri Biryani</h3><span class="mdish-price">21,90&nbsp;€</span></div>
             <p>Gebratener Safran-Reis mit Lammfleisch, Mandeln, Rosinen, Kokos</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="kokos nuesse paneer vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=70" alt="Paneer Biryani"><span class="mdish-nr">918</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Paneer Biryani</h3><span class="mdish-price">18,90&nbsp;€</span></div>
             <p>Gebratener Safran-Reis mit frischem hausgemachtem Käse, Mandeln, Rosinen, Kokos</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="garnelen huhn lamm nuesse">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=70" alt="Safran-Mix Biryani"><span class="mdish-nr">194</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Safran-Mix Biryani</h3><span class="mdish-price">25,50&nbsp;€</span></div>
@@ -1098,49 +1137,49 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🍨</span><h2>Dessert</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="mango vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1703763253190-4af44c87a23e?auto=format&fit=crop&w=600&q=70" alt="Mango-Cream mit Vanilleeis"><span class="mdish-nr">200</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Mango-Cream mit Vanilleeis</h3><span class="mdish-price">5,90&nbsp;€</span></div>
             <p>Cremige Mango mit Vanilleeis</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="nuesse vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1582801205465-c0d029e85a1c?auto=format&fit=crop&w=600&q=70" alt="Firni"><span class="mdish-nr">201</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Firni</h3><span class="mdish-price">5,90&nbsp;€</span></div>
             <p>Honigmilch mit Reismehl, Mandeln, Pistazien und Nüssen</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="mango nuesse vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1642614696258-6eadac9705f0?auto=format&fit=crop&w=600&q=70" alt="Mango Kulfi"><span class="mdish-nr">202</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Mango Kulfi</h3><span class="mdish-price">5,90&nbsp;€</span></div>
             <p>Honigmilch mit Reismehl, Mandeln, Pistazien nach indischer Art</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1666190092159-3171cf0fbb12?auto=format&fit=crop&w=600&q=70" alt="Gulab Jamun"><span class="mdish-nr">203</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Gulab Jamun</h3><span class="mdish-price">5,90&nbsp;€</span></div>
             <p>Bällchen aus Milch und Quark, in Honig gebacken</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="nuesse vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1616429266392-63ba6f1570a1?auto=format&fit=crop&w=600&q=70" alt="Gajar Halwa"><span class="mdish-nr">204</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Gajar Halwa</h3><span class="mdish-price">5,90&nbsp;€</span></div>
             <p>Geriebene Karotten, Mandeln, Pistazien und Nüsse, gekocht in Milch mit Honig</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="mango vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1688458297155-228a3b1e5b49?auto=format&fit=crop&w=600&q=70" alt="Frische Mango mit Eiscreme"><span class="mdish-nr">205</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Frische Mango mit Eiscreme</h3><span class="mdish-price">7,50&nbsp;€</span></div>
             <p>Frische Mango mit Eiscreme</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1617013451942-441bbba35a5e?auto=format&fit=crop&w=600&q=70" alt="Safran „Dessert-Teller“ – für 2 Personen"><span class="mdish-nr">206</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Safran „Dessert-Teller“ – für 2 Personen</h3><span class="mdish-price">11,90&nbsp;€</span></div>
@@ -1154,14 +1193,14 @@
     <div class="wrap">
       <div class="mcat-head"><span class="mcat-ic">🧒</span><h2>Für Kinder</h2></div>
       <div class="mdish-grid">
-        <article class="mdish">
+        <article class="mdish" data-tags="vegan vegetarisch">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1598679253544-2c97992403ea?auto=format&fit=crop&w=600&q=70" alt="Pommes"><span class="mdish-nr">K 01</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Pommes</h3><span class="mdish-price">4,50&nbsp;€</span></div>
             <p>Knusprige Pommes frites</p>
           </div>
         </article>
-        <article class="mdish">
+        <article class="mdish" data-tags="huhn">
           <div class="mdish-pic"><img loading="lazy" src="https://images.unsplash.com/photo-1627662168223-7df99068099a?auto=format&fit=crop&w=600&q=70" alt="Chicken Nuggets"><span class="mdish-nr">K 02</span></div>
           <div class="mdish-body">
             <div class="mdish-top"><h3>Chicken Nuggets</h3><span class="mdish-price">6,50&nbsp;€</span></div>
@@ -1171,6 +1210,7 @@
       </div>
     </div>
   </section>
+<div id="bkEmpty">Keine Gerichte passen zu dieser Auswahl – bitte weniger Zutaten wählen oder den Filter zurücksetzen.</div>
 
 <section class="note"><div class="wrap">
   <p>Alle Preise in Euro inkl. gesetzl. MwSt. Bitte informieren Sie uns über Allergien oder Unverträglichkeiten – wir beraten Sie gerne. Änderungen und Druckfehler vorbehalten.<br>
@@ -1192,5 +1232,43 @@
   </div>
   <p class="foot-note">© 2026 Safran Ruhpolding · Hauptstraße 25a, 83324 Ruhpolding · Speisefotos: Unsplash (kostenlose Lizenz).</p>
 </div></footer>
+
+<script>
+(function(){
+  var chips=[].slice.call(document.querySelectorAll('.bchip'));
+  var dishes=[].slice.call(document.querySelectorAll('.mdish'));
+  var cats=[].slice.call(document.querySelectorAll('.mcat'));
+  var countEl=document.getElementById('bkCount');
+  var empty=document.getElementById('bkEmpty');
+  var total=dishes.length;
+  function tagsOf(el){return (el.getAttribute('data-tags')||'').split(' ');}
+  function apply(){
+    var inc=[],exc=[];
+    chips.forEach(function(c){var s=c.getAttribute('data-state');
+      if(s==='1')inc.push(c.getAttribute('data-tag'));
+      else if(s==='2')exc.push(c.getAttribute('data-tag'));});
+    var shown=0;
+    dishes.forEach(function(d){
+      var t=tagsOf(d);
+      var ok=inc.every(function(x){return t.indexOf(x)>-1;}) && !exc.some(function(x){return t.indexOf(x)>-1;});
+      d.classList.toggle('is-hidden',!ok); if(ok)shown++;
+    });
+    cats.forEach(function(cat){
+      cat.classList.toggle('is-hidden',cat.querySelectorAll('.mdish:not(.is-hidden)').length===0);
+    });
+    var active=inc.length||exc.length;
+    countEl.textContent=active?(shown+' von '+total+' Gerichten passen'):'';
+    empty.classList.toggle('show',active&&shown===0);
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    c.setAttribute('data-state',String((parseInt(c.getAttribute('data-state'),10)+1)%3));apply();
+  });});
+  var reset=document.getElementById('bkReset');
+  reset.addEventListener('click',function(){
+    chips.forEach(function(c){c.setAttribute('data-state','0');});apply();
+    document.getElementById('baukasten').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+</script>
 
 </body></html>

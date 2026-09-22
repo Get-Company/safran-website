@@ -217,6 +217,18 @@
   .foot-note{margin-top:28px;padding-top:20px;border-top:1px solid rgba(232,163,61,.18);font-size:.82rem;color:#8f6f5c}
 
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ---- KÜCHEN-LEXIKON ---- */
+  .lexikon{background:linear-gradient(180deg,var(--cream-2) 0%,#fff 100%)}
+  .lex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .lex-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 22px 20px;
+    box-shadow:0 12px 30px -26px rgba(74,18,32,.6);position:relative;transition:transform .16s ease}
+  .lex-card:hover{transform:translateY(-4px)}
+  .lex-card .lic{font-size:1.7rem;line-height:1}
+  .lex-card h4{font-family:var(--display);color:var(--maroon);font-size:1.32rem;margin:10px 0 6px}
+  .lex-card p{color:#5c3d30;font-size:.96rem;font-weight:300}
+  @media(max-width:820px){.lex-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.lex-grid{grid-template-columns:1fr}}
 </style>
 
 <!-- DELIVERY TOP BAR -->
@@ -236,6 +248,7 @@
     <nav class="nav-links">
       <a href="#liefern">Liefern lassen</a>
       <a href="#ayurveda">Ayurveda</a>
+      <a href="#lexikon">Lexikon</a>
       <a href="#gerichte">Gerichte</a>
       <a href="speisekarte.html">Speisekarte</a>
       <a href="#ambiente">Ambiente</a>
@@ -315,6 +328,28 @@
           <div class="ring"></div>
           <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=75" alt="Bunte indische Gewürze – die Basis der ayurvedischen Küche" loading="lazy">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KÜCHEN-LEXIKON -->
+  <section id="lexikon" class="lexikon">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Kleines Küchen-Lexikon</p>
+        <h2 style="color:var(--maroon);font-size:clamp(2rem,5vw,3rem);margin:.28em 0">Was steckt dahinter?</h2>
+        <p style="color:var(--muted)">Damit Sie genau wissen, was auf den Teller kommt – die wichtigsten Begriffe der indischen Küche kurz erklärt.</p>
+      </div>
+      <div class="lex-grid">
+        <div class="lex-card"><div class="lic">🔥</div><h4>Tandoori</h4><p>Im <em>Tandoor</em>, einem tönernen Holzkohle-Ofen, bei großer Hitze gegart – außen rauchig-knusprig, innen saftig.</p></div>
+        <div class="lex-card"><div class="lic">🫓</div><h4>Naan</h4><p>Weiches Fladenbrot aus Hefeteig, das an der heißen Innenwand des Tandoors gebacken wird – natur, mit Knoblauch oder gefüllt.</p></div>
+        <div class="lex-card"><div class="lic">🧀</div><h4>Paneer</h4><p>Milder, hausgemachter Frischkäse – die klassische vegetarische Eiweißquelle der indischen Küche.</p></div>
+        <div class="lex-card"><div class="lic">🌶️</div><h4>Masala</h4><p>Eine Mischung frisch gerösteter Gewürze. „Garam Masala“ ist die warme Grundmischung, die vielen Gerichten ihr Aroma gibt.</p></div>
+        <div class="lex-card"><div class="lic">🍚</div><h4>Biryani</h4><p>Duftender Safran-Basmatireis, geschichtet und geschmort mit Gemüse, Hühnerfleisch, Lamm oder Garnelen.</p></div>
+        <div class="lex-card"><div class="lic">🥛</div><h4>Raita</h4><p>Kühlender Joghurt mit Gurke, Minze oder Gewürzen – der milde Begleiter zu scharfen Speisen.</p></div>
+        <div class="lex-card"><div class="lic">🍲</div><h4>Dal</h4><p>Sämig gewürztes Gericht aus Linsen oder Hülsenfrüchten – eines der Nationalgerichte Indiens.</p></div>
+        <div class="lex-card"><div class="lic">🍽️</div><h4>Thali</h4><p>Wörtlich „Teller“: ein Menü aus mehreren kleinen Gerichten mit Reis, Brot und Beilagen zum Probieren.</p></div>
+        <div class="lex-card"><div class="lic">🧆</div><h4>Pakora &amp; Samosa</h4><p>Frittierte Köstlichkeiten: Gemüse oder Käse im würzigen Kichererbsenteig (Pakora) bzw. gefüllte Teigtaschen (Samosa).</p></div>
       </div>
     </div>
   </section>
