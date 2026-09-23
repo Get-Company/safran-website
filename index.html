@@ -218,6 +218,31 @@
 
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
+  /* ---- GEWÜRZ-MEMORY SPIEL ---- */
+  .game-sec{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
+  .game-bar{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;margin-bottom:24px}
+  .game-bar .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px 16px;display:flex;flex-direction:column;line-height:1.15;min-width:78px}
+  .game-bar .stat span{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .game-bar .stat b{font-family:var(--display);color:var(--maroon);font-size:1.2rem}
+  .game-bar .btn{margin-left:auto}
+  .game-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:520px}
+  @media(max-width:520px){.game-grid{grid-template-columns:repeat(3,1fr);gap:10px}}
+  .card{aspect-ratio:1;perspective:600px;cursor:pointer;background:none;border:none;padding:0}
+  .card-inner{position:relative;width:100%;height:100%}
+  .card-face{position:absolute;inset:0;display:grid;place-items:center;border-radius:16px;box-shadow:0 10px 24px -18px rgba(74,18,32,.6);transition:opacity .25s ease,transform .4s ease}
+  .card-back{background:radial-gradient(circle at 32% 30%,var(--saffron),var(--chili) 80%);color:#fff;font-family:var(--display);font-size:1.7rem;opacity:1;transform:rotateY(0deg)}
+  .card-front{background:#fff;border:1px solid var(--line);font-size:2.1rem;opacity:0;transform:rotateY(90deg)}
+  .card.flip .card-back,.card.matched .card-back{opacity:0;transform:rotateY(-90deg)}
+  .card.flip .card-front,.card.matched .card-front{opacity:1;transform:rotateY(0deg)}
+  .card.matched .card-front{background:#e9faf2;border-color:var(--teal)}
+  .card.matched{animation:cardpop .32s ease}
+  @keyframes cardpop{50%{transform:scale(1.07)}}
+  .game-win{margin-top:26px;background:linear-gradient(135deg,var(--teal),#0a5c4f);color:#fff;border-radius:20px;padding:28px 26px;text-align:center;box-shadow:var(--shadow)}
+  .game-win h3{color:#fff;font-size:clamp(1.4rem,4vw,1.9rem);margin-bottom:8px}
+  .game-win p{color:#dff7ee;margin-bottom:18px}
+  .game-win .btn.ghost{border-color:#fff;color:#fff}
+  .game-win .btn.ghost:hover{background:#fff;color:var(--teal)}
+
   /* ---- KÜCHEN-LEXIKON ---- */
   .lexikon{background:linear-gradient(180deg,var(--cream-2) 0%,#fff 100%)}
   .lex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -252,6 +277,7 @@
       <a href="#gerichte">Gerichte</a>
       <a href="speisekarte.html">Speisekarte</a>
       <a href="#ambiente">Ambiente</a>
+      <a href="#spiel">Spiel</a>
       <a href="#kontakt">Kontakt</a>
       <a class="btn deliver" href="tel:+4986634188934">Liefern lassen</a>
     </nav>
@@ -447,6 +473,30 @@
     </div>
   </section>
 
+  <!-- GEWÜRZ-MEMORY -->
+  <section id="spiel" class="game-sec">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Kleiner Zeitvertreib</p>
+        <h2>Gewürz-Memory</h2>
+        <p>Finden Sie alle Gewürz-Paare – der perfekte Zeitvertreib, während Ihre Bestellung frisch zubereitet wird. Schaffen Sie es in möglichst wenigen Zügen?</p>
+      </div>
+      <div class="game-bar">
+        <div class="stat"><span>Züge</span><b id="gMoves">0</b></div>
+        <div class="stat"><span>Zeit</span><b id="gTime">0:00</b></div>
+        <div class="stat"><span>Bestzeit</span><b id="gBest">–</b></div>
+        <button class="btn" id="gRestart">🔀 Neu mischen</button>
+      </div>
+      <div class="game-grid" id="gGrid"></div>
+      <div class="game-win" id="gWin" hidden>
+        <h3>🎉 Geschafft!</h3>
+        <p id="gWinTxt"></p>
+        <a class="btn" style="background:var(--saffron);color:var(--maroon)" href="speisekarte.html">📖 Zur Speisekarte</a>
+        <button class="btn ghost" id="gWinAgain" style="margin-left:10px">Nochmal spielen</button>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="kontakt" class="contact">
     <div class="wrap">
@@ -519,5 +569,58 @@
       p.setAttribute('fill','none');p.setAttribute('stroke','currentColor');p.setAttribute('stroke-width','1');
       g.appendChild(p);
     }
+  })();
+</script>
+
+<script>
+  // Gewürz-Memory
+  (function(){
+    var SYM=['🌶️','🧄','🫚','🥭','🥥','🍋'];
+    var grid=document.getElementById('gGrid'); if(!grid) return;
+    var movesEl=document.getElementById('gMoves'),timeEl=document.getElementById('gTime'),bestEl=document.getElementById('gBest');
+    var win=document.getElementById('gWin'),winTxt=document.getElementById('gWinTxt');
+    var first=null,lock=false,moves=0,matched=0,secs=0,timer=null,started=false;
+    function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+    function loadBest(){try{return localStorage.getItem('safran_memory_best');}catch(e){return null;}}
+    function saveBest(v){try{localStorage.setItem('safran_memory_best',v);}catch(e){}}
+    function showBest(){var b=loadBest();bestEl.textContent=b?fmt(parseInt(b,10)):'–';}
+    function startTimer(){if(started)return;started=true;timer=setInterval(function(){secs++;timeEl.textContent=fmt(secs);},1000);}
+    function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+    function build(){
+      grid.innerHTML='';win.hidden=true;
+      first=null;lock=false;moves=0;matched=0;secs=0;started=false;
+      clearInterval(timer);movesEl.textContent='0';timeEl.textContent='0:00';
+      shuffle(SYM.concat(SYM.slice())).forEach(function(sym){
+        var c=document.createElement('button');
+        c.type='button';c.className='card';c.setAttribute('aria-label','Memory-Karte');c.dataset.sym=sym;
+        c.innerHTML='<span class="card-inner"><span class="card-face card-back">स</span><span class="card-face card-front">'+sym+'</span></span>';
+        c.addEventListener('click',function(){flip(c);});
+        grid.appendChild(c);
+      });
+    }
+    function flip(card){
+      if(lock||card.classList.contains('flip')||card.classList.contains('matched'))return;
+      startTimer();card.classList.add('flip');
+      if(!first){first=card;return;}
+      moves++;movesEl.textContent=moves;
+      if(first.dataset.sym===card.dataset.sym){
+        first.classList.add('matched');card.classList.add('matched');first=null;matched++;
+        if(matched===SYM.length)finish();
+      }else{
+        lock=true;var a=first,b=card;first=null;
+        setTimeout(function(){a.classList.remove('flip');b.classList.remove('flip');lock=false;},750);
+      }
+    }
+    function finish(){
+      clearInterval(timer);
+      var best=loadBest();
+      var rec=(!best||secs<parseInt(best,10));
+      if(rec){saveBest(String(secs));showBest();}
+      winTxt.textContent='Alle Paare gefunden in '+moves+' Zügen und '+fmt(secs)+(rec?' – neue Bestzeit! 🌟':'.');
+      win.hidden=false;
+    }
+    document.getElementById('gRestart').addEventListener('click',build);
+    document.getElementById('gWinAgain').addEventListener('click',build);
+    showBest();build();
   })();
 </script>
